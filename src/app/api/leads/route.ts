@@ -30,8 +30,6 @@ export async function POST(request: NextRequest) {
       request.headers.get("x-real-ip") ||
       "unknown";
 
-    const searchParams = request.nextUrl.searchParams;
-
     const lead: LeadData = {
       first_name: String(body.first_name).trim(),
       last_name: String(body.last_name).trim(),
@@ -47,8 +45,8 @@ export async function POST(request: NextRequest) {
       best_time_to_call: String(body.best_time_to_call),
       heard_about_us: body.heard_about_us ? String(body.heard_about_us) : undefined,
       ip_address: ip,
-      utm_source: searchParams.get("utm_source") || body.utm_source || undefined,
-      utm_campaign: searchParams.get("utm_campaign") || body.utm_campaign || undefined,
+      utm_source: body.utm_source ? String(body.utm_source) : undefined,
+      utm_campaign: body.utm_campaign ? String(body.utm_campaign) : undefined,
     };
 
     await appendLeadToSheet(lead);

@@ -183,10 +183,17 @@ export default function LeadForm() {
     setServerError("");
 
     try {
+      const params = new URLSearchParams(window.location.search);
+      const payload = {
+        ...form,
+        utm_source: params.get("utm_source") || undefined,
+        utm_campaign: params.get("utm_campaign") || undefined,
+      };
+
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
 
       const data = await res.json();
