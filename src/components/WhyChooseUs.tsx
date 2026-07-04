@@ -63,7 +63,7 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={benefit.title}
-                className="group bg-white rounded-2xl p-6 shadow-sm border transition-all duration-200 hover:shadow-md hover:-translate-y-1"
+                className="group bg-white rounded-2xl p-6 border transition-all duration-200 hover:-translate-y-1 shadow-[0_1px_3px_rgba(15,23,42,0.06),0_1px_2px_rgba(15,23,42,0.04)] hover:shadow-[0_16px_32px_-12px_rgba(15,23,42,0.18)]"
                 style={{ borderColor: "#E2E8F0" }}
               >
                 <div

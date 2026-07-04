@@ -74,9 +74,13 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <article
               key={t.name}
-              className="bg-white rounded-2xl p-8 shadow-sm border flex flex-col gap-4 relative"
-              style={{ borderColor: "#E2E8F0" }}
+              className="bg-white rounded-2xl p-8 pt-7 flex flex-col gap-4 relative overflow-hidden transition-all duration-200 hover:-translate-y-1 shadow-[0_1px_3px_rgba(15,23,42,0.06),0_1px_2px_rgba(15,23,42,0.04)] hover:shadow-[0_16px_32px_-12px_rgba(15,23,42,0.18)]"
             >
+              <div
+                className="absolute top-0 left-0 right-0 h-1"
+                style={{ background: "linear-gradient(90deg, #0369A1, #38BDF8)" }}
+                aria-hidden="true"
+              />
               <Quote
                 className="absolute top-6 right-6 w-8 h-8 opacity-10"
                 style={{ color: "#0369A1" }}

@@ -55,7 +55,7 @@ export default function HowItWorks() {
         <div className="relative">
           {/* Connector line — desktop */}
           <div
-            className="hidden lg:block absolute top-16 left-1/6 right-1/6 h-0.5"
+            className="hidden lg:block absolute top-8 left-1/6 right-1/6 h-0.5"
             style={{ backgroundColor: "#E2E8F0" }}
             aria-hidden="true"
           />
