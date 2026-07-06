@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { ArrowRight, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { ArrowRight, CheckCircle, AlertCircle, BadgePercent, CarFront, Loader2 } from "lucide-react";
 
 const VEHICLE_MAKES = [
   "Acura", "Audi", "BMW", "Buick", "Cadillac", "Chevrolet", "Chrysler",
@@ -80,7 +80,7 @@ const STEPS: { id: string; title: string; fields: (keyof FormData)[] }[] = [
   },
   {
     id: "coverage",
-    title: "Coverage area",
+    title: "Location & timing",
     fields: ["state", "zip_code", "best_time_to_call", "heard_about_us"],
   },
   {
@@ -277,7 +277,7 @@ export default function LeadForm() {
           You&apos;re All Set!
         </h2>
         <p className="text-base mb-6" style={{ color: "#64748B" }}>
-          One of our warranty specialists will contact you{" "}
+          One of our refinance specialists will contact you{" "}
           {form.best_time_to_call === "morning"
             ? "this morning (8 AM – 12 PM)"
             : form.best_time_to_call === "afternoon"
@@ -285,6 +285,27 @@ export default function LeadForm() {
             : "this evening (5 PM – 8 PM)"}{" "}
           at the number you provided.
         </p>
+        <div
+          className="rounded-2xl p-4 mb-6 border flex items-start gap-3 text-left"
+          style={{ backgroundColor: "#EFF6FF", borderColor: "#7DD3FC" }}
+          role="note"
+          aria-label="License plate reminder"
+        >
+          <span
+            className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ backgroundColor: "#0369A1" }}
+          >
+            <CarFront className="w-5 h-5 text-white" aria-hidden="true" />
+          </span>
+          <div>
+            <p className="text-sm font-bold mb-1" style={{ color: "#0F172A" }}>
+              Have your license plate number ready
+            </p>
+            <p className="text-sm" style={{ color: "#475569" }}>
+              Your refinance specialist will need your vehicle&apos;s license plate number during the call.
+            </p>
+          </div>
+        </div>
         <div
           className="rounded-2xl p-6 border text-left"
           style={{ backgroundColor: "#F8FAFC", borderColor: "#E2E8F0" }}
@@ -295,15 +316,15 @@ export default function LeadForm() {
           <ul className="space-y-2 text-sm" style={{ color: "#334155" }}>
             <li className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "#16A34A" }} aria-hidden="true" />
-              A licensed specialist reviews your {form.vehicle_year} {form.vehicle_make} {form.vehicle_model}
+              A specialist reviews your {form.vehicle_year} {form.vehicle_make} {form.vehicle_model} and application
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "#16A34A" }} aria-hidden="true" />
-              We present the best plans available for your vehicle
+              We share personalized refinance options available to you
             </li>
             <li className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "#16A34A" }} aria-hidden="true" />
-              You choose your coverage with zero pressure — or walk away free
+              You choose what works for your budget with zero pressure
             </li>
           </ul>
         </div>
@@ -321,6 +342,39 @@ export default function LeadForm() {
       }}
       aria-labelledby="form-heading"
     >
+      {/* Prominent refinance offer notice */}
+      <div
+        className="mb-6 rounded-2xl border p-4 sm:p-5 flex items-start gap-4"
+        style={{
+          background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)",
+          borderColor: "#38BDF8",
+          boxShadow: "0 10px 25px -18px rgba(3,105,161,0.65)",
+        }}
+        role="note"
+        aria-label="Pre-approval rate notice"
+      >
+        <span
+          className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+          style={{ backgroundColor: "#0369A1" }}
+        >
+          <BadgePercent className="w-6 h-6 text-white" aria-hidden="true" />
+        </span>
+        <div>
+          <p
+            className="text-xs font-bold uppercase tracking-widest mb-1"
+            style={{ color: "#0369A1" }}
+          >
+            Today&apos;s Refinance Opportunity
+          </p>
+          <p className="text-base sm:text-lg font-bold leading-snug" style={{ color: "#0F172A" }}>
+            Apply today to see if you&apos;re pre-approved for an interest rate as low as 5% APR.
+          </p>
+          <p className="text-xs mt-1.5" style={{ color: "#475569" }}>
+            Rates and approval are subject to lender terms and eligibility.
+          </p>
+        </div>
+      </div>
+
       {/* Header */}
       <div className="mb-6">
         <div className="inline-flex items-center gap-2 mb-3">
@@ -328,7 +382,7 @@ export default function LeadForm() {
             className="text-xs font-semibold uppercase tracking-widest"
             style={{ color: "#0369A1" }}
           >
-            Free Quote — No Obligation
+            Free Refinance Check — No Obligation
           </span>
         </div>
         <h2
@@ -336,10 +390,10 @@ export default function LeadForm() {
           className="text-2xl sm:text-3xl font-bold mb-2"
           style={{ color: "#0F172A", fontFamily: "var(--font-lexend)" }}
         >
-          Get Your Free Quote
+          Explore Your Refinance Options
         </h2>
         <p className="text-sm" style={{ color: "#64748B" }}>
-          Takes less than 60 seconds. A specialist will contact you within hours.
+          Takes less than 60 seconds. See how much you may be able to save.
         </p>
       </div>
 
@@ -364,7 +418,7 @@ export default function LeadForm() {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} noValidate aria-label="Warranty quote request form">
+      <form onSubmit={handleSubmit} noValidate aria-label="Auto refinance request form">
             {/* Server error */}
             {status === "error" && serverError && (
               <div
@@ -675,7 +729,7 @@ export default function LeadForm() {
                   </>
                 ) : (
                   <>
-                    Get My Free Quote Now
+                    See My Refinance Options
                     <ArrowRight className="w-5 h-5" aria-hidden="true" />
                   </>
                 )}
@@ -684,7 +738,7 @@ export default function LeadForm() {
 
             {step === STEPS.length - 1 ? (
               <p className="mt-4 text-center text-xs" style={{ color: "#94A3B8" }}>
-                By submitting this form, you agree to be contacted by a licensed warranty
+                By submitting this form, you agree to be contacted by a refinance
                 specialist. We respect your privacy and will never sell your information.
               </p>
             ) : (
