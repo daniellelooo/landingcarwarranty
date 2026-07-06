@@ -1,10 +1,10 @@
-import { CheckCircle2 } from "lucide-react";
+import { ArrowDown, ArrowRight, CheckCircle2 } from "lucide-react";
 import LeadForm from "@/components/LeadForm";
 
 const trustPoints = [
-  "Licensed & bonded in all 50 states",
-  "A+ rated with the Better Business Bureau",
-  "No obligation — cancel anytime, no fees",
+  "Quick, no-obligation refinance check",
+  "Options tailored to your vehicle and budget",
+  "No upfront fees to explore your options",
 ];
 
 export default function HeroSection() {
@@ -31,7 +31,7 @@ export default function HeroSection() {
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
               <span className="text-blue-100 text-sm font-medium">
-                Trusted by 50,000+ American Drivers
+                Simple Auto Refinancing for American Drivers
               </span>
             </div>
 
@@ -39,15 +39,31 @@ export default function HeroSection() {
               className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight"
               style={{ fontFamily: "var(--font-lexend)" }}
             >
-              Protect Your Vehicle
-              <span className="block text-blue-300 mt-1">Beyond the Dealership</span>
+              Car Payments Too High?
+              <span className="block text-blue-300 mt-1">We Can Help.</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-              The average car repair costs{" "}
-              <strong className="text-white">$1,200+</strong>. Extended warranty
-              coverage keeps your family protected and your budget intact — no surprises, no stress.
+              Explore auto refinancing options designed to help lower your{" "}
+              <strong className="text-white">interest rate and monthly payment</strong>
+              {" "}— with a simple process and no unnecessary runaround.
             </p>
+
+            <a
+              href="#get-quote"
+              className="group inline-flex items-center gap-3 rounded-full border border-sky-300/50 bg-sky-400/15 px-5 py-3 mb-8 text-white font-bold backdrop-blur-sm shadow-lg transition-all duration-200 hover:bg-sky-400/25 hover:border-sky-200 focus:outline-none focus:ring-4 focus:ring-sky-300/40"
+              aria-label="Go to the refinance form"
+            >
+              <span>Start here — it only takes 60 seconds</span>
+              <span className="relative flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-sky-400 text-slate-950">
+                <span
+                  className="absolute inset-0 rounded-full bg-sky-300 opacity-50 animate-ping"
+                  aria-hidden="true"
+                />
+                <ArrowDown className="relative w-5 h-5 lg:hidden" aria-hidden="true" />
+                <ArrowRight className="relative hidden w-5 h-5 lg:block" aria-hidden="true" />
+              </span>
+            </a>
 
             <ul className="flex flex-col items-center lg:items-start gap-3 mb-8">
               {trustPoints.map((point) => (
@@ -63,7 +79,7 @@ export default function HeroSection() {
             </ul>
 
             <p className="text-blue-200 text-sm">
-              No credit card required &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 100% Free
+              Fast pre-approval check &nbsp;·&nbsp; No obligation
             </p>
           </div>
 
