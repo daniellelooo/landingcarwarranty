@@ -15,12 +15,12 @@ export default function Footer() {
                 className="text-lg font-bold text-white"
                 style={{ fontFamily: "var(--font-lexend)" }}
               >
-                AutoShield Warranty
+                Drive Point Solutions
               </span>
             </div>
             <p className="text-sm leading-relaxed">
-              Providing comprehensive vehicle protection plans for American drivers
-              since 2009. Licensed and regulated in all 50 states.
+              Helping drivers explore auto refinancing options through a simple,
+              straightforward inquiry process.
             </p>
           </div>
 
@@ -36,20 +36,20 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0" style={{ color: "#0369A1" }} aria-hidden="true" />
                 <a
-                  href="tel:+18005550100"
+                  href="tel:+18003839064"
                   className="hover:text-white transition-colors duration-150"
-                  aria-label="Call us at 1-800-555-0100"
+                  aria-label="Call us at 1-800-383-9064"
                 >
-                  1-800-555-0100
+                  1-800-383-9064
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 flex-shrink-0" style={{ color: "#0369A1" }} aria-hidden="true" />
                 <a
-                  href="mailto:info@autoshieldwarranty.com"
+                  href="mailto:support@drivepointsolutions.org"
                   className="hover:text-white transition-colors duration-150"
                 >
-                  info@autoshieldwarranty.com
+                  support@drivepointsolutions.org
                 </a>
               </li>
             </ul>
@@ -65,7 +65,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-white transition-colors duration-150">
+                <a href="/privacy-policy" className="hover:text-white transition-colors duration-150">
                   Privacy Policy
                 </a>
               </li>
@@ -75,7 +75,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors duration-150">
+                <a href="/privacy-policy#state-privacy-rights" className="hover:text-white transition-colors duration-150">
                   Do Not Sell My Information
                 </a>
               </li>
@@ -88,9 +88,9 @@ export default function Footer() {
           style={{ borderColor: "#1E293B" }}
         >
           <p className="mb-2" style={{ color: "#334155" }}>
-            © {year} AutoShield Warranty. All rights reserved. AutoShield Warranty is a
-            licensed vehicle service contract provider. Coverage terms and conditions may vary
-            by state. Please review your contract for complete details.
+            © {year} Drive Point Solutions. All rights reserved. Refinancing options, rates,
+            and eligibility vary by applicant and provider. Submitting an inquiry does not
+            guarantee approval or specific terms.
           </p>
           <p style={{ color: "#1E293B" }}>
             This website is for informational purposes. Not an offer or solicitation in

@@ -746,6 +746,21 @@ export default function LeadForm() {
                 No obligation. Your information is kept private.
               </p>
             )}
+            <p className="mt-3 text-center text-xs leading-relaxed" style={{ color: "#64748B" }}>
+              Privacy Notice: We collect your contact, vehicle, location, and request details to
+              evaluate and respond to your refinancing inquiry. We may disclose information only
+              to service providers that process it on our behalf, as described in our{" "}
+              <a
+                href="/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold underline underline-offset-2"
+                style={{ color: "#0369A1" }}
+              >
+                Privacy Policy
+              </a>
+              .
+            </p>
           </form>
     </div>
   );
