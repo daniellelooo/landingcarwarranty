@@ -79,7 +79,7 @@ export default function HeroSection() {
             </ul>
 
             <p className="text-blue-200 text-sm">
-              Fast pre-approval check &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; 100% Free
+              Fast pre-approval check &nbsp;·&nbsp; No obligation
             </p>
           </div>
 
