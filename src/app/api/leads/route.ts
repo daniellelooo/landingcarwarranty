@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendLeadToSheet, LeadData } from "@/lib/sheets";
+import { sendLeadEvent } from "@/lib/meta-capi";
 
 export async function POST(request: NextRequest) {
   try {
@@ -50,6 +51,18 @@ export async function POST(request: NextRequest) {
     };
 
     await appendLeadToSheet(lead);
+
+    // Server-side Meta Conversions API. Deduplicated against the browser Pixel
+    // via the shared event_id. Never blocks or fails the lead response.
+    await sendLeadEvent(lead, {
+      eventId: body.event_id ? String(body.event_id) : undefined,
+      eventSourceUrl:
+        request.headers.get("referer") || request.headers.get("origin") || undefined,
+      clientIp: ip,
+      userAgent: request.headers.get("user-agent") || undefined,
+      fbp: request.cookies.get("_fbp")?.value,
+      fbc: request.cookies.get("_fbc")?.value,
+    });
 
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (error) {

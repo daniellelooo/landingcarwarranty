@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
+import MetaPixel from "@/components/MetaPixel";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        <MetaPixel />
       </body>
     </html>
   );

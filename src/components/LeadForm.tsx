@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useRef, useState, FormEvent } from "react";
 import { ArrowRight, CheckCircle, AlertCircle, BadgePercent, CarFront, Loader2 } from "lucide-react";
+import { newEventId, trackInitiateCheckout, trackLead } from "@/lib/meta-pixel";
 
 const VEHICLE_MAKES = [
   "Acura", "Audi", "BMW", "Buick", "Cadillac", "Chevrolet", "Chrysler",
@@ -158,6 +159,7 @@ export default function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState("");
   const [step, setStep] = useState(0);
+  const startedTracked = useRef(false);
 
   const set = (field: keyof FormData) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -216,6 +218,11 @@ export default function LeadForm() {
     }
 
     if (step < STEPS.length - 1) {
+      // Fire the Meta "form started" signal once, when the visitor commits to step 2.
+      if (!startedTracked.current) {
+        startedTracked.current = true;
+        trackInitiateCheckout();
+      }
       setStep((s) => s + 1);
       return;
     }
@@ -225,8 +232,12 @@ export default function LeadForm() {
 
     try {
       const params = new URLSearchParams(window.location.search);
+      // Shared between the browser Pixel event and the server CAPI event so
+      // Meta deduplicates the two.
+      const eventId = newEventId();
       const payload = {
         ...form,
+        event_id: eventId,
         utm_source: params.get("utm_source") || undefined,
         utm_campaign: params.get("utm_campaign") || undefined,
       };
@@ -245,6 +256,7 @@ export default function LeadForm() {
         return;
       }
 
+      trackLead(eventId);
       setStatus("success");
     } catch {
       setServerError("Network error. Please check your connection and try again.");
